@@ -16,7 +16,7 @@ wget https://github.com/ismaeldamiao/my_c_header/archive/refs/heads/main.zip
 
 And install the scrit `newc` as:
 ```bash
-unzip main.c && cd my_c_header-main/ && bash install.sh
+unzip main.zip && cd my_c_header-main/ && bash install.sh
 ```
 
 Allways if you want to start a new c project use:
