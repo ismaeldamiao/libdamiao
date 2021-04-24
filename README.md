@@ -5,4 +5,4 @@ mathematics and engineering.
 
 To learn about c see (...)[...].
 
-To learn about macros see (macros.md)[macros.md].
+To learn about macros see [macros.md](macros.md).
