@@ -25,4 +25,4 @@ newc
 ```
 
 and all contents of this directoty are copied to a current directory
-(see as `ls`!).
+(see as `ls`!) and you can edit `main.c` file.
