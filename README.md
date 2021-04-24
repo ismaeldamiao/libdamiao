@@ -15,11 +15,42 @@ See [LICENSE](LICENSE).
 
 ## Source code to diferent...
 
-You can write a specified souce code to diferent version of ISO C.
+You can write a specific source code to different operational system.
 ```c
-/* *****************************************************************************
-   To compile differently for each version of ISO C
-***************************************************************************** */
+#if defined(__ANDROID_API__)
+   /* android compatible source code. */
+#elif defined(__linux__)
+   /* linux compatible source code. */
+#elif defined(_WIN32)
+   /* windows compatible source code. */
+#elif defined(__APPLE__)
+   /* MAC OS compatible source code. */
+#else
+   #error "OS not supported!"
+#endif
+```
+
+In the case of `__ANDROID_API__` is declared
+you can write a specific source code to different version of android.
+
+```c
+#if __ANDROID_API__ >= 28
+   /* Android Pie compatible source code. */
+#elif __ANDROID_API__ >= 26
+   /* Android Oreo compatible source code. */
+#elif __ANDROID_API__ >= 24
+   /* Android Nougat compatible source code. */
+#elif __ANDROID_API__ >= 23
+   /* Android Marshmallow compatible source code. */
+#elif __ANDROID_API__ >= 19
+   /* Android KitKat compatible source code. */
+#else
+   #error "Android not suported!"
+#endif
+```
+
+You can write a specific source code to different version of ISO C.
+```c
 #if defined(__STDC_VERSION__)
    #if __STDC_VERSION__ >= 201710L
    /* C17 compatible source code. */
@@ -36,4 +67,3 @@ You can write a specified souce code to diferent version of ISO C.
    /* K&R C compatible source code. */
 #endif /* __STDC_VERSION__ */
 ```
-
