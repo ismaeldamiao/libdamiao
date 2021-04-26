@@ -5,18 +5,18 @@ mathematics and engineering.
 
 To learn about c see [...](...).
 
-To learn about macros see [macros.md](macros.md).
+To learn about macros see [macros.md](/MarkDown/macros.md).
 
 ## Install
 
-You can download this repository in a terminal with:
+You can download this repository using a terminal as:
 ```bash
 wget https://github.com/ismaeldamiao/my_c_header/archive/refs/heads/main.zip
 ```
 
 And install the scrit `newc` as:
 ```bash
-unzip main.zip && cd my_c_header-main/ && bash install.sh
+unzip main.c && cd my_c_header-main/ && bash install.sh
 ```
 
 Allways if you want to start a new c project use:
