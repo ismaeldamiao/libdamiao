@@ -1,12 +1,12 @@
-## What a macros?
+## What a directive?
 
-Macros are instructions to preprocessor.
-Macros change your code before and the compiler compile the changed code.
+Directives are instructions to preprocessor.
+Directives change your code before and the compiler compile the changed code.
 
-For example, if the macro `#define MAX(x, y) x < y ? -x : y` is called
+For example, if the directive `#define MAX(x, y) x < y ? -x : y` is called
 by `a = 2 * MAX(3 + b, 8)` then it exapands the expression to
 `a = 2 * 3 + b ? -3 + b : 8` and 2 is multiplied by 3 instead the max. The
-correct way of define the macro is `#define MAX(x, y) ((x) < (y) ? -(x) : (y))`
+correct way of define is `#define MAX(x, y) ((x) < (y) ? -(x) : (y))`
 and the previous expression is expanded to
 `a = 2 * ((3 + b) < (8) ? -(3 + b) : (8))`.
 
@@ -41,6 +41,34 @@ You can force a error in preprocessing as:
 ```c
 #error "A test"
 ```
+
+## Pragmas
+
+Standard pragmas:
+```c
+#pragma STDC FENV_ACCESS arg 	// (1) 	(since C99)
+#pragma STDC FP_CONTRACT arg 	// (2) 	(since C99)
+#pragma STDC CX_LIMITED_RANGE arg 	// (3) 	(since C99)
+```
+
+where arg is either **ON** or **OFF** or **DEFAULT**.
+1. If set to **ON**, informs the compiler that the program will access or modify
+floating-point environment, which means that optimizations that could subvert
+flag tests and mode changes (e.g., global common subexpression elimination,
+code motion, and constant folding) are prohibited. The default value is
+implementation-defined, usually **OFF**.
+1. Allows contracting of floating-point expressions, that is optimizations
+that omit rounding errors and floating-point exceptions that would be observed
+if the expression was evaluated exactly as written. For example, allows the
+implementation of `(x*y) + z` with a single fused multiply-add CPU instruction.
+The default value is implementation-defined, usually **ON**.
+1. Informs the compiler that multiplication, division, and absolute value of
+complex numbers may use simplified mathematical formulas
+`(x+iy)×(u+iv) = (xu-yv)+i(yu+xv)`,
+`(x+iy)/(u+iv) = [(xu+yv)+i(yu-xv)]/(u^2+v^2)`, `and |x+iy| = √x^2+y^2`,
+despite the possibility of intermediate overflow. In other words, the
+programmer guarantees that the range of the values that will be passed to those
+function is limited. The default value is **OFF**.
 
 ## Source code to diferent...
 
