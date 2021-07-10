@@ -25,7 +25,7 @@ initialized integer, the integer are initialized with
 the seed of pseudo-random gererator and after call is changed to a
 pseudo-random integer.
   * **Returns:**
-The `random` function return the pseudo-random real in the the interval [0, 1].
+The `random` function return the pseudo-random real.
 * `double _Complex atoc(const char *str);`
   * **Description:**
 The `atoc` function convert the initial portion of the string pointed
