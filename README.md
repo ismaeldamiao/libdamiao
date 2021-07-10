@@ -15,16 +15,25 @@ and implementations for functions declared in the header.
 * Define physical constants in [SI base unit](https://en.wikipedia.org/wiki/SI_base_unit).
 
 Moreover, the following functions be declared:
-*
-```c
-double ran(unsigned long *seed);
-```
+* `double random(unsigned int *idum);`
+  * **Description:**
+The `random` function computes a sequence of pseudo-random integers in the range 0 to
+`UINT_MAX` and convert it in pseudo-random reals in the interval [0, 1].
+Successive calls must generate the same sequence of numbers if the first
+call have the same value. The argument `idum` is a pointer to a
+initialized integer, the integer are initialized with
+the seed of pseudo-random gererator and after call is changed to a
+pseudo-random integer.
+  * **Returns:**
+The `random` function return the pseudo-random real in the the interval [0, 1].
+* `double _Complex atoc(const char *str);`
+  * **Description:**
+The `atoc` function convert the initial portion of the string pointed
+to by `str` to `double _Complex` representation.
+  * **Returns:**
+The `atoc` function return the converted value.
 
-**Description**
-
-**Returns**
-
-The `ran` function return random number in the the interval [0, 1].
+it's OK use `#define` to a implementation.
 
 Repository with many `c` function and utilities in computational physics,
 mathematics and engineering.
