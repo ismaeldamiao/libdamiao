@@ -1,4 +1,17 @@
-# my_c_header
+# My c header
+
+This repository contains the header file were I use in my programs
+and implementations for functions declared in the header.
+
+## Good pratices
+
+* Use pure and only C99 features.
+  * If any extension is good, implement this.
+* Do not use `tgmath.h` library.
+* Use `I` as `const` imaginary unit.
+* Prefers operators as functions.
+* If the compiler is `gcc` then hability `-Wall`, `-Wextra` and `-Wpedantic` flags.
+* Use the mathematical constants from `POSIX` extension.
 
 Repository with many `c` function and utilities in computational physics,
 mathematics and engineering.
