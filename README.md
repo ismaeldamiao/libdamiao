@@ -8,10 +8,23 @@ and implementations for functions declared in the header.
 * Use pure and only C99 features.
   * If any extension is good, implement this.
 * Do not use `tgmath.h` library.
-* Use `I` as `const` imaginary unit.
+* Set `I` as `const` to imaginary unit.
 * Prefers operators as functions.
 * If the compiler is `gcc` then hability `-Wall`, `-Wextra` and `-Wpedantic` flags.
-* Use the mathematical constants from `POSIX` extension.
+* Define the mathematical constants from `POSIX` extension.
+* Define physical constants in [SI base unit](https://en.wikipedia.org/wiki/SI_base_unit).
+
+Moreover, the following functions be declared:
+*
+```c
+double ran(unsigned long *seed);
+```
+
+**Description**
+
+**Returns**
+
+The `ran` function return random number in the the interval [0, 1].
 
 Repository with many `c` function and utilities in computational physics,
 mathematics and engineering.
