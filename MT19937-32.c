@@ -15,7 +15,7 @@
    E-mail: ismaellxd@gmail.com
    Site: https://ismaeldamiao.github.io/
    *****************************************************************************
-   Copyright (c) 2020 SANTOS, I.F.F. (Ismael Damiao)
+   Copyright (c) 2021 I.F.F. dos SANTOS (Ismael Damiao)
 
    Permission is hereby granted, free of charge, to any person obtaining a copy 
    of this software and associated documentation files (the “Software”), to 
