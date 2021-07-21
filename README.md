@@ -12,9 +12,8 @@ and implementations for functions declared in the header.
   * If any extension is good, implement this.
   * Mathematical constants from `POSIX` extension are good extension.
 * Do not use `tgmath.h` library.
-* Prefers operators as functions.
 * If the compiler is `gcc` then hability `-Wall`, `-Wextra` and `-Wpedantic` flags.
-* Define some physical constants.
+* Define some physical constants macros.
   * `CONST_SPEED_OF_LIGHT` expands to the speed of the light in vacuum in metres per second.
   * `CONST_AVOGADRO` expands to the Avogadro constant in mol<sup>-1</sup>.
   * `CONST_PLANCK` expands to the Planck constant in joules per hertz.
