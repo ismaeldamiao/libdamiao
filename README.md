@@ -11,6 +11,7 @@ and implementations for functions declared in the header.
 * Use pure and only C99 features.
   * If any extension is good, implement this.
   * Mathematical constants from `POSIX` extension are good extension.
+  * Function `CMPLX` defined in C11 standard is a good feature.
 * Do not use `tgmath.h` library.
 * If the compiler is `gcc` then hability `-Wall`, `-Wextra` and `-Wpedantic` flags.
 * Define some physical constants macros.
