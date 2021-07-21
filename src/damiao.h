@@ -88,8 +88,18 @@ static double _Complex __CIMAG;
 #error "Complex arithmetic is not supported."
 #endif /* __STDC_NO_COMPLEX__ */
 
+#if !defined(_Imaginary_I)
+#define CMPLX(x, y) ((double _Complex)((double)(x) + _Complex_I * (double)(y)))
+#endif
+
 #else
-#define CMPLX(x, y) ((x) + _Complex_I*(y))
+
+#if defined(_Imaginary_I)
+#define CMPLX(x, y) ((double _Complex)((double)(x) + _Imaginary_I *(double)(y)))
+#else
+#define CMPLX(x, y) ((double _Complex)((double)(x) + _Complex_I * (double)(y)))
+#endif /* _Imaginary_I */
+
 #endif /* ISO C11 */
 
 
