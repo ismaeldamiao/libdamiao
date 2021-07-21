@@ -14,9 +14,16 @@ and implementations for functions declared in the header.
 * Do not use `tgmath.h` library.
 * Prefers operators as functions.
 * If the compiler is `gcc` then hability `-Wall`, `-Wextra` and `-Wpedantic` flags.
-* Define physical constants in [SI base unit](https://en.wikipedia.org/wiki/SI_base_unit).
+* Define some physical constants.
   * `CONST_SPEED_OF_LIGHT` expands to the speed of the light in vacuum in metres per second.
-  * `CONST_AVOGADRO` expands to the Avogadro number in mol<sup>-1</sup>.
+  * `CONST_AVOGADRO` expands to the Avogadro constant in mol<sup>-1</sup>.
+  * `CONST_PLANCK` expands to the Planck constant in joules per hertz.
+  * `CONST_REDUCED_PLANCK` expands to the reduced Planck constant in joules per hertz.
+  * `CONST_BOLTZMANN` expands to the Boltzmann constant in joules per kelvin.
+  * `CONST_ELEMENTARY_CHARGE` expands to the elementary charge in coulombs.
+  * `CONST_GRAVITATIONAL` expands to the gravitational constant in cubic metre per kilogram · square second.
+  * `CONST_VACUUM_PERMITTIVITY` expands to the vacuum permittivity in farads per meter.
+  * `CONST_VACUUM_PERMEABILITY` expands to the vacuum permeability in henry per meter.
 
 Moreover, the following functions be declared:
 * `double random(unsigned int *idum);`
