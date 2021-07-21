@@ -56,43 +56,38 @@
 #define TEMPERING_SHIFT_T(y) (y << 37)
 #define TEMPERING_SHIFT_L(y) (y >> 43)
 
-static uint64_t mt[N]; /* the array for the state vector */
-static int mti = N+1; /* mti==N+1 means mt[N] is not initialized */
-
-/* initializing the array with NONZERO seed */
-void sgenrand(uint64_t seed){
-   /* setting the initial seeds to mt[N] using the generator Line 25 of table 1
-      in [KNUTH 1981, The Art of Computer Programming Vol. 2 (2nd Ed.), pp102 */
-   mt[0] = seed & UINT64_C(0xffffffffffffffff);
-   for(mti = 1; mti < N; ++mti)
-      mt[mti] = (69069 * mt[mti-1]) & UINT64_C(0xffffffffffffffff);
-}
-
-/* uint64_t genrand(void) */ /* for integer generation */
-double genrand(void)
+double genrand(uint64_t *y)
 {
-   uint64_t y;
+   static uint64_t mt[N]; /* the array for the state vector */
+   static int mti = N+1; /* mti==N+1 means mt[N] is not initialized */
    static uint64_t mag01[2] = {UINT64_C(0x0), MATRIX_A};
    if(mti >= N){ /* generate N words at one time */
       int kk;
-      if(mti == N+1) /* if sgerand() has not called, */
-         sgenrand(UINT64_C(4357)); /* a default seed is used */
+      if(mti == N+1){ /* initializing the array with NONZERO seed */
+         if(*y == UINT64_C(0)) *y = UINT64_C(4357); /* a default seed is used */
+         /* setting the initial seeds to mt[N] using the generator Line 25 of
+         table 1 in [KNUTH 1981, The Art of Computer Programming Vol. 2
+         (2nd Ed.), pp102 */
+         mt[0] = *y & UINT64_C(0xffffffffffffffff);
+         for(mti = 1; mti < N; ++mti)
+            mt[mti] = (69069 * mt[mti-1]) & UINT64_C(0xffffffffffffffff);
+      }
       for(kk = 0; kk < N-M; ++kk){
-         y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-         mt[kk] = mt[kk+M] ^ (y >> 1) ^ mag01[y & 0x1];
+         *y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
+         mt[kk] = mt[kk+M] ^ (*y >> 1) ^ mag01[*y & 0x1];
       }
       for(; kk < N-1; ++kk){
-         y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
-         mt[kk] = mt[kk + (M-N)] ^ (y >> 1) ^ mag01[y & 0x1];
+         *y = (mt[kk] & UPPER_MASK) | (mt[kk+1] & LOWER_MASK);
+         mt[kk] = mt[kk + (M-N)] ^ (*y >> 1) ^ mag01[*y & 0x1];
       }
-      y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-      mt[N-1] = mt[M-1] ^ (y >> 1) ^ mag01[y & 0x1];
+      *y = (mt[N-1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
+      mt[N-1] = mt[M-1] ^ (*y >> 1) ^ mag01[*y & 0x1];
       mti = 0;
    }
-   y = mt[++mti];
-   y ^= TEMPERING_SHIFT_U(y) & TEMPERING_MASK_D;
-   y ^= TEMPERING_SHIFT_S(y) & TEMPERING_MASK_B;
-   y ^= TEMPERING_SHIFT_T(y) & TEMPERING_MASK_C;
-   y ^= TEMPERING_SHIFT_L(y);
-   return ((double)y / (double)UINT64_C(0xffffffffffffffff));
+   *y = mt[++mti];
+   *y ^= TEMPERING_SHIFT_U(*y) & TEMPERING_MASK_D;
+   *y ^= TEMPERING_SHIFT_S(*y) & TEMPERING_MASK_B;
+   *y ^= TEMPERING_SHIFT_T(*y) & TEMPERING_MASK_C;
+   *y ^= TEMPERING_SHIFT_L(*y);
+   return ((double)(*y) / (double)UINT64_MAX);
 }

@@ -24,9 +24,6 @@
    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
    IN THE SOFTWARE.
 ***************************************************************************** */
-#ifndef MT19937_H
-#define MT19937_H 1
-
 #include <stdint.h> /* Use C99 or latter */
 
 #if defined(UINT64_MAX)
@@ -46,5 +43,3 @@ typedef unsigned int uint32_t;
 #include "./MT19937-32.c"
 
 #endif /* UINT64_MAX */
-
-#endif /* MT19937_H */
