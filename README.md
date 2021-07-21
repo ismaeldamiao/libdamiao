@@ -45,22 +45,24 @@ To learn about c see [...](...).
 
 To learn about macros see [macros.md](/MarkDown/macros.md).
 
-## Install
+## How to use
 
 You can download this repository using a terminal as:
 ```bash
-wget https://github.com/ismaeldamiao/my_c_header/archive/refs/heads/main.zip
+wget https://github.com/ismaeldamiao/libdamiao/archive/refs/heads/main.zip
 ```
 
-And install the scrit `newc` as:
+Uncompress using `unzip` as:
 ```bash
-unzip main.c && cd my_c_header-main/ && bash install.sh
+unzip main.zip
 ```
 
-Allways if you want to start a new c project use:
-```bash
-newc
-```
+And compile using `gcc` using the script [COMPILE](/COMPILE). It
+make a library named `libdamiao.a`.
 
-and all contents of this directoty are copied to a current directory
-(see as `ls`!) and you can edit `main.c` file.
+To use the functions put in the directory of your code the files
+`damiao.h` and `libdamiao.a`, include the header in your C-CODE
+(like `#include "damiao.h"`) and compile using with the flags
+`-L./ -ldamiao`. For example, if the file `main.c` use the function
+`random` you need to add `#include "damiao.h"` header in `main.c`
+and compile it with `gcc main.c -lm -L./ -ldamiao`.
