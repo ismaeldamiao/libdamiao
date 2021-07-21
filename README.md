@@ -68,6 +68,15 @@ To use the functions you need to put in the directory of your code the files
 and compile it with `gcc main.c -lm -L./ -ldamiao`,
 since `main.c`, `damiao.h` and `libdamiao.a` are in the same directory.
 
+## Donate
+
+You can donate to the creator I. F. F. dos Santos (@ismaeldamiao)
+through PayPal by clicking  in the link
+[https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D66EM3DGU35EE&source=url](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D66EM3DGU35EE&source=url).
+
+Se você possiu conta em algum banco que opera junto ao Banco Central do Brasil
+você também pode doar usando o PIX `ismaellxd@gmail.com`.
+
 
 ## Read more
 
