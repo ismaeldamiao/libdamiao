@@ -57,7 +57,7 @@ Uncompress using `unzip` as:
 unzip main.zip
 ```
 
-And compile using `gcc` running the script [COMPILE](/COMPILE). It
+And compile using `gcc` running the script [COMPILE](/src/COMPILE). It
 make a library named `libdamiao.a`.
 
 To use the functions you need to put in the directory of your code the files
