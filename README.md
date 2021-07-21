@@ -10,12 +10,13 @@ and implementations for functions declared in the header.
 
 * Use pure and only C99 features.
   * If any extension is good, implement this.
+  * Mathematical constants from `POSIX` extension are good extension.
 * Do not use `tgmath.h` library.
-* Set `I` as `const` to imaginary unit.
 * Prefers operators as functions.
 * If the compiler is `gcc` then hability `-Wall`, `-Wextra` and `-Wpedantic` flags.
-* Define the mathematical constants from `POSIX` extension.
 * Define physical constants in [SI base unit](https://en.wikipedia.org/wiki/SI_base_unit).
+  * `CONST_SPEED_OF_LIGHT` expands to the speed of the light in vacuum in metres per second.
+  * `CONST_AVOGADRO` expands to the Avogadro number in mol<sup>-1</sup>.
 
 Moreover, the following functions be declared:
 * `double random(unsigned int *idum);`
@@ -38,16 +39,9 @@ The `atoc` function return the converted value.
 
 it's OK use `#define` to a implementation.
 
-Repository with many `c` function and utilities in computational physics,
-mathematics and engineering.
-
-To learn about c see [...](...).
-
-To learn about macros see [macros.md](/MarkDown/macros.md).
-
 ## How to use
 
-You can download this repository using a terminal as:
+You can download this repository using `wget` in a terminal as:
 ```bash
 wget https://github.com/ismaeldamiao/libdamiao/archive/refs/heads/main.zip
 ```
@@ -57,12 +51,20 @@ Uncompress using `unzip` as:
 unzip main.zip
 ```
 
-And compile using `gcc` using the script [COMPILE](/COMPILE). It
+And compile using `gcc` running the script [COMPILE](/COMPILE). It
 make a library named `libdamiao.a`.
 
-To use the functions put in the directory of your code the files
+To use the functions you need to put in the directory of your code the files
 `damiao.h` and `libdamiao.a`, include the header in your C-CODE
-(like `#include "damiao.h"`) and compile using with the flags
+(like `#include "damiao.h"`) and compile using `gcc` with the flags
 `-L./ -ldamiao`. For example, if the file `main.c` use the function
 `random` you need to add `#include "damiao.h"` header in `main.c`
-and compile it with `gcc main.c -lm -L./ -ldamiao`.
+and compile it with `gcc main.c -lm -L./ -ldamiao`,
+since `main.c`, `damiao.h` and `libdamiao.a` are in the same directory.
+
+
+## Read more
+
+To learn about c see [...](...).
+
+To learn about macros see [macros.md](/MarkDown/macros.md).
