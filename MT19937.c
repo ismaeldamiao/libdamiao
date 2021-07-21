@@ -1,10 +1,10 @@
 /* *****************************************************************************
-   This file contains source-code to genarate pseudo-ramdom numbers.
+   This file contains some intructions for preprocessor to compile MT19937.
    *****************************************************************************
    E-mail: ismaellxd@gmail.com
    Site: https://ismaeldamiao.github.io/
    *****************************************************************************
-   Copyright (c) 2020 Ismael Damiao
+   Copyright (c) 2020 SANTOS, I.F.F. (Ismael Damiao)
 
    Permission is hereby granted, free of charge, to any person obtaining a copy 
    of this software and associated documentation files (the “Software”), to 
@@ -29,10 +29,22 @@
 
 #include <stdint.h> /* Use C99 or latter */
 
-#ifndef UINT64_MAX
-# include "MT19937-64.c"
+#if defined(UINT64_MAX)
+
+#include "./MT19937-64.c"
+#elif defined(UINT32_MAX)
+#include "./MT19937-32.c"
+
 #else
-# include "MT19937-32.c"
-#endif
+
+/* Because uint32_t type is optionaly in ISO C99 i use typedef in the case
+   of the implementation do not support uint32_t directly but
+   it may not work properly. */
+#define UINT32_MAX UINT_MAX
+#define UINT32_C(c) c ## U
+typedef unsigned int uint32_t;
+#include "./MT19937-32.c"
+
+#endif /* UINT64_MAX */
 
 #endif /* MT19937_H */

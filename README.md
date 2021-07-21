@@ -1,3 +1,7 @@
+[![Tip Me via PayPal](https://img.shields.io/badge/PayPal-tip%20me-green.svg?logo=paypal)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=D66EM3DGU35EE&source=url)
+[![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](/LICENSE)
+![Docker Image Version (latest by date)](https://img.shields.io/docker/v/ismaeldamiao/libdamiao)
+
 # LibDamiao
 
 This repository contains the header file were I use in my programs
@@ -61,3 +65,4 @@ newc
 
 and all contents of this directoty are copied to a current directory
 (see as `ls`!) and you can edit `main.c` file.
+

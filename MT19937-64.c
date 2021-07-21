@@ -1,10 +1,22 @@
 /* *****************************************************************************
-   This file contains source-code to genarate pseudo-ramdom numbers.
+   A C- program for MT19937: Real number version
+   genrand() generates pseudorandom real number (double)
+   which is uniformly distributed on [0, 1] interval, for each
+   call.
+   ***
+   This vesion use words with 64bit. In the first
+   call genrand(seed) set initial values to the working area of 312 words.
+   (seed is any 64-bit integer except for 0)
+   The function genrand(*y) return the pseudorandom real and
+   set y to the pseudorandom integer.
+   ***
+   The original code has write by Takuji Nishimura and the values for
+   64bit words has obtained in wikipedia.
    *****************************************************************************
    E-mail: ismaellxd@gmail.com
    Site: https://ismaeldamiao.github.io/
    *****************************************************************************
-   Copyright (c) 2020 Ismael Damiao
+   Copyright (c) 2020 SANTOS, I.F.F. (Ismael Damiao)
 
    Permission is hereby granted, free of charge, to any person obtaining a copy 
    of this software and associated documentation files (the “Software”), to 
@@ -24,10 +36,6 @@
    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
    IN THE SOFTWARE.
 ***************************************************************************** */
-/* A C- program for MT19937: Real number version
-   genrand() generates pseudorandom real number (double)
-   which is uniformly distributed on [0, 1] interval, for each
-   call. */
 
 #include <stdio.h>
 #include <stdint.h> /* Use C99 or latter */
@@ -87,18 +95,4 @@ double genrand(void)
    y ^= TEMPERING_SHIFT_T(y) & TEMPERING_MASK_C;
    y ^= TEMPERING_SHIFT_L(y);
    return ((double)y / (double)UINT64_C(0xffffffffffffffff));
-   /* return y; */ /* for integer generation */
 }
-
-#undef WORD_SIZE
-#undef N
-#undef M
-#undef MATRIX_A
-#undef UPPER_MASK
-#undef LOWER_MASK
-#undef TEMPERING_MASK_B
-#undef TEMPERING_MASK_C
-#undef TEMPERING_SHIFT_U
-#undef TEMPERING_SHIFT_S
-#undef TEMPERING_SHIFT_T
-#undef TEMPERING_SHIFT_L

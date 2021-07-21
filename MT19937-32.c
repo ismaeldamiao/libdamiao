@@ -1,10 +1,21 @@
 /* *****************************************************************************
-   This file contains source-code to genarate pseudo-ramdom numbers.
+   A C- program for MT19937: Real number version
+   genrand() generates pseudorandom real number (double)
+   which is uniformly distributed on [0, 1] interval, for each
+   call.
+   ***
+   This vesion use words with 32bit (or the size of unsigned int). In the first
+   call genrand(seed) set initial values to the working area of 624 words.
+   (seed is any 32-bit integer except for 0)
+   The function genrand(*y) return the pseudorandom real and
+   set y to the pseudorandom integer.
+   ***
+   The original code has write by Takuji Nishimura.
    *****************************************************************************
    E-mail: ismaellxd@gmail.com
    Site: https://ismaeldamiao.github.io/
    *****************************************************************************
-   Copyright (c) 2020 Ismael Damiao
+   Copyright (c) 2020 SANTOS, I.F.F. (Ismael Damiao)
 
    Permission is hereby granted, free of charge, to any person obtaining a copy 
    of this software and associated documentation files (the “Software”), to 
@@ -24,22 +35,9 @@
    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
    IN THE SOFTWARE.
 ***************************************************************************** */
-/* A C- program for MT19937: Real number version
-   genrand() generates pseudorandom real number (double)
-   which is uniformly distributed on [0, 1] interval, for each
-   call. */
 
 #include <stdio.h>
 #include <stdint.h> /* Use C99 or latter */
-
-/* Because uint32_t type is optionaly in ISO C99 i use typedef in the case
-   of the implementation do not support uint32_t directly but
-   it may not work properly. */
-#ifndef UINT32_MAX
-#define UINT32_MAX UINT_MAX
-#define UINT32_C(c) c ## U
-typedef unsigned int uint32_t;
-#endif
 
 /* Period parameters */
 #define WORD_SIZE 32
@@ -93,16 +91,3 @@ double genrand(uint32_t *y)
    *y ^= TEMPERING_SHIFT_L(*y);
    return ((double)(*y) / (double)UINT32_MAX);
 }
-
-#undef WORD_SIZE
-#undef N
-#undef M
-#undef MATRIX_A
-#undef UPPER_MASK
-#undef LOWER_MASK
-#undef TEMPERING_MASK_B
-#undef TEMPERING_MASK_C
-#undef TEMPERING_SHIFT_U
-#undef TEMPERING_SHIFT_S
-#undef TEMPERING_SHIFT_T
-#undef TEMPERING_SHIFT_L

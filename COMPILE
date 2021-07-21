@@ -1,13 +1,21 @@
 #!/bin/bash
 
-function CC(){
-   gcc $@
-}
+# Script to compile libDamiao
 
-CC -c -g MT19937.c -std=c99 -lm -o MT19937.o
-CC -c -g atoc.c -std=c99 -lm -o atoc.o
+cd "$(dirname $0)"
 
-ar rs libdamiao.a MT19937.o atoc.o
-rm MT19937.o atoc.o
+# implementation list to compile
+file="MT19937.c "
+file+="atoc.c "
+
+# Compile implementations
+#    with gcc
+gcc -c -g $file -std=c99 -lm
+
+# Make a static library with archiver
+ar rs libdamiao.a *.o
+
+# Remove object files
+rm *.o
 
 exit 0

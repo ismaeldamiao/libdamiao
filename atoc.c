@@ -1,14 +1,11 @@
 /* *****************************************************************************
-   Programa para converter uma string em um numero complexo.
-   Metodo: Guarda os valores separados por sinal (+ -) em uma string
-   auxiliar, alem de separar a parte imaginaria da real identificando
-   a unidade imaginaria, o que permite usar a parte imaginaria antes da real
-   e vice-versa.
+   The atoc function convert the initial portion of the string pointed by
+   str to double _Complex representation and return the converted value.
    *****************************************************************************
    E-mail: ismaellxd@gmail.com
    Site: https://ismaeldamiao.github.io/
    *****************************************************************************
-   Copyright (C) SANTOS, I.F.F. (Ismael Damiao)
+   Copyright (c) 2020 SANTOS, I.F.F. (Ismael Damiao)
 
    Permission is hereby granted, free of charge, to any person obtaining a copy 
    of this software and associated documentation files (the “Software”), to 
@@ -74,10 +71,9 @@ double _Complex atoc(const char *str){
       /* 'i' sozinho da '0.0' mas o '1.0' fica implicito */
       if(imag == 0.0) imag = 1.0;
    }
-#ifdef _Imaginary_I
+#if defined(_Imaginary_I)
    return (real + imag*_Imaginary_I);
 #else
    return (real + imag*_Complex_I);
 #endif
 }
-#undef str_size

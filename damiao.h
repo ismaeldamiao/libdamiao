@@ -1,10 +1,14 @@
 /* *****************************************************************************
-   This header file contains some...
+   This file is a collection of functions and subroutine for use in
+   physics, mathematics and engineering.
+   This is conformed to the ISO/IEC 9899:1999 (also called C99), but
+   contains intructions to compile with some GNU extensions if __GNUC__ is
+   defined.
    *****************************************************************************
    E-mail: ismaellxd@gmail.com
    Site: https://ismaeldamiao.github.io/
    *****************************************************************************
-   Copyright (c) 2020 Ismael Damiao
+   Copyright (c) 2020 SANTOS, I.F.F. (Ismael Damiao)
 
    Permission is hereby granted, free of charge, to any person obtaining a copy 
    of this software and associated documentation files (the “Software”), to 
@@ -24,13 +28,9 @@
    FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
    IN THE SOFTWARE.
 ***************************************************************************** */
-/* This file is a collection of functions and subroutine for use in
-   physics, mathematics and engineering.
-   This is conformed to the ISO/IEC 9899:1999 (also called C99), but
-   contains intructions to compile with some GNU extensions if __GNUC__ is
-   defined. */
-#ifndef DAMIAO
-#define DAMIAO 1
+
+#ifndef DAMIAO_H
+#define DAMIAO_H 1
 
 /* *****************************************************************************
    C99 standard
@@ -58,16 +58,6 @@
 #pragma STDC FENV_ACCESS OFF
 #pragma STDC FP_CONTRACT ON
 #pragma STDC CX_LIMITED_RANGE OFF
-
-
-#undef I
-/* Defined as macro that expands to either _Complex_I or _Imaginary_I.
-   I believe it's better define it as constant. */
-#if defined(_Imaginary_I)
-const double _Imaginary I = (double _Imaginary)_Imaginary_I;
-#else
-const double _Complex I = (double _Complex)_Complex_I;
-#endif
 
 /* Some implementations of the C standards use functions in creal and cimag, but
    is best use simples operators (musl implemented like this).
@@ -188,9 +178,9 @@ static double _Complex __CIMAG;
    ...
 ***************************************************************************** */
 
-double genrand(unsigned int *y);
-
 #define random(idum) genrand(idum)
 double _Complex atoc(const char *str);
 
-#endif /* DAMIAO */
+double genrand(unsigned int *y);
+
+#endif /* DAMIAO_H */
