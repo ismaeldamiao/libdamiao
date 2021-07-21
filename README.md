@@ -1,4 +1,4 @@
-# My c header
+# LibDamiao
 
 This repository contains the header file were I use in my programs
 and implementations for functions declared in the header.
