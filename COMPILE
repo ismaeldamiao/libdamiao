@@ -1,0 +1,13 @@
+#!/bin/bash
+
+function CC(){
+   gcc $@
+}
+
+CC -c -g MT19937.c -std=c99 -lm -o MT19937.o
+CC -c -g atoc.c -std=c99 -lm -o atoc.o
+
+ar rs libdamiao.a MT19937.o atoc.o
+rm MT19937.o atoc.o
+
+exit 0
