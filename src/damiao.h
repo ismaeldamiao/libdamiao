@@ -43,6 +43,8 @@
 
 #include <stdio.h>   /* Many functions for file input and output */
 #include <stdlib.h>  /* Numeric conversion functions, memory allocation */
+#include <stdbool.h> /* Defines a boolean data type */
+#include <stdint.h>  /* Defines exact-width integer types. */
 #include <math.h>    /* Many mathematical functions */
 #include <complex.h> /* Many complex mathematical functions */
 #include <float.h>   /* DBL_MAX */
@@ -184,9 +186,27 @@ static double _Complex __CIMAG;
    ...
 ***************************************************************************** */
 
-#define random(idum) genrand(idum)
 double _Complex atoc(const char *str);
 
-double genrand(unsigned int *y);
+/* Randon numbers. */
+#if defined(UINT64_MAX)
+double mt19937(uint64_t*);
+#elif defined(UINT32_MAX)
+double mt19937(uint32_t*);
+#else
+double mt19937(unsigned int *);
+#endif
+#define random(idum) mt19937(idum)
+double *correlated_w_fourier(double,int,int);
+double *correlated_w_bernoulli(double,int,int);
+double *correlated_w_distance(double,int,int);
+
+#if defined(__USE_RUNGE_KUTTA_8)
+#include "rk8.c"
+#endif
+
+#if defined(__USE_RUNGE_KUTTA_14)
+#include "rk14.c"
+#endif
 
 #endif /* DAMIAO_H */

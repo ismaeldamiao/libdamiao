@@ -65,7 +65,7 @@ The default value is implementation-defined, usually **ON**.
 1. Informs the compiler that multiplication, division, and absolute value of
 complex numbers may use simplified mathematical formulas
 `(x+iy)×(u+iv) = (xu-yv)+i(yu+xv)`,
-`(x+iy)/(u+iv) = [(xu+yv)+i(yu-xv)]/(u^2+v^2)`, `and |x+iy| = √x^2+y^2`,
+`(x+iy)/(u+iv) = [(xu+yv)+i(yu-xv)]/(u^2+v^2)`, `and |x+iy| = √(x^2+y^2)`,
 despite the possibility of intermediate overflow. In other words, the
 programmer guarantees that the range of the values that will be passed to those
 function is limited. The default value is **OFF**.

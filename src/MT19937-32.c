@@ -56,7 +56,7 @@
 #define TEMPERING_SHIFT_T(y) (y << 15)
 #define TEMPERING_SHIFT_L(y) (y >> 18)
 
-double genrand(uint32_t *y)
+double mt19937(uint32_t *y)
 {
    static uint32_t mt[N]; /* the array for the state vector */
    static int mti = N+1; /* mti==N+1 means mt[N] is not initialized */

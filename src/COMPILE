@@ -7,6 +7,12 @@ cd "$(dirname $0)"
 # implementation list to compile
 file="MT19937.c "
 file+="atoc.c "
+file+="atoc.c "
+file+="correlated_w_fourier.c "
+file+="correlated_w_bernoulli.c "
+file+="correlated_w_distance.c "
+file+=" "
+file+=" "
 
 # Compile implementations
 #    with gcc

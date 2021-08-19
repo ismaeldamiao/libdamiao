@@ -9,9 +9,9 @@
 This repository contains the header file were I use in my programs
 and implementations for functions declared in the header.
 
-## Good pratices
+## Features
 
-* Use pure and only C99 features.
+* `LibDamiao` ese pure and only C99 features.
   * If any extension is good, implement this.
   * Mathematical constants from `POSIX` extension are good extension.
   * Function `CMPLX` defined in C11 standard is a good feature.
@@ -46,8 +46,47 @@ The `atoc` function convert the initial portion of the string pointed
 to by `str` to `double _Complex` representation.
   * **Returns:**
 The `atoc` function return the converted value.
+* `double *correlated_w_fourier(double alpha, int N, int seed);`
+  * **Description:**
+The `correlated_w_fourier` function computes a normalized sequence of correlated
+numbers. `alpha >= 0` is the factor that constrols correlations, if
+`alpha` is `0` then the sequence is pseudo-randomized. `N` is
+the quantity of numbers in the sequence. `seed` is a seed  for the 
+pseudo-random numbers generator.
+  * **Returns:**
+The `correlated_w_fourier` function return a array (pointer to `double`) that
+contain the correlated sequence.
+* `double *correlated_w_distance(double alpha, int N, int seed);`
+  * **Description:**
+The `correlated_w_distance` function computes a normalized sequence of correlated
+numbers. `alpha > 0` is the factor that constrols correlations, if
+`alpha` is much less than `1` then the sequence is pseudo-randomized. `N` is
+the quantity of numbers in the sequence. `seed` is a seed  for the 
+pseudo-random numbers generator.
+  * **Returns:**
+The `correlated_w_distance` function return a array (pointer to `double`) that
+contain the correlated sequence.
+* `double *correlated_w_bernoulli(double alpha, int N, int seed);`
+  * **Description:**
+The `correlated_w_bernoulli` function computes a sequence of correlated
+numbers. `alpha >= 0` is the factor that constrols correlations, if
+`alpha` is `0` then the sequence is pseudo-randomized. `N` is
+the quantity of numbers in the sequence. `seed` is a seed  for the 
+pseudo-random numbers generator.
+  * **Returns:**
+The `correlated_w_bernoulli` function return a array (pointer to `double`) that
+contain the correlated sequence.
 
-it's OK use `#define` to a implementation.
+In addition, `LibDamiao` provide declaration of Runge-Kutta matrices for
+Runge-Kutta methods:
+* Runge-Kutta method of order 8:
+  * `const long double __rk8_a[11][11]`
+  * `const long double __rk8_b[11]`
+  * `const long double __rk8_c[11]`
+* Runge-Kutta method of order 14:
+  * `const long double __rk14_a[35][35]`
+  * `const long double __rk14_b[35]`
+  * `const long double __rk14_c[35]`
 
 ## How to use
 
